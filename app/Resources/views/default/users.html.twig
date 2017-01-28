@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <!-- DataTables CSS -->
+    <link href="{{ asset('bundles/public/css/datatables-plugins/dataTables.bootstrap.css') }}" rel="stylesheet">
+    <!-- DataTables Responsive CSS -->
+    <link href="{{ asset('bundles/public/css/datatables-responsive/dataTables.responsive.css') }}" rel="stylesheet">
+{% endblock %}
+
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-header" style="color: #2672ec; font-family: Calibri">
+                Гишүүн
+            </h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Гишүүний жагсаалт
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <thead>
+                            <tr>
+                                <th style="width: 8%">№</th>
+                                <th style="width: 25%">Нэвтрэх нэр</th>
+                                <th style="width: 57%">Мэйл хаяг</th>
+                                <th style="width: 5%"></th>
+                                <th style="width: 5%"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user in users %}
+                                <tr class="even gradeA">
+                                    <td>{{loop.index}}</td>
+                                    <td>{{ user.username }}</td>
+                                    <td>{{ user.email }}</td>
+                                  {#  <td><a href="{{ path('login_show', { 'id': login.id }) }}" data-toggle="tooltip" title="Харах"><span class="badge" style="background-color: #007bb6; width: 100%"><i class="fa fa-eye"></i></span></a></td>
+                                    <td><a href="{{ path('login_edit', { 'id': login.id }) }}" data-toggle="tooltip" title="Засах"><span class="badge" style="background-color: #ff5500; width: 100%"><i class="fa fa-edit"></i></span></a></td>
+                                                {#                                    <td><a href="#" data-toggle="tooltip" title="Устгах" ><span class="badge" style="background-color: #080808; width: 100%"><i class="fa fa-trash"></i></span></a></td>#}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <a href="{{ path('fos_user_registration_register') }}" class="btn btn-primary" style="float:right">
+        <i class="fa fa-plus"></i>&nbsp;&nbsp; Гишүүн бүртгэх
+    </a>
+
+
+{% endblock %}
+
